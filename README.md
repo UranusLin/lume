@@ -1,5 +1,7 @@
 # Project Lume: Zero-Config AI-Driven LaTeX IDE
 
+[![Release](https://img.shields.io/github/v/release/morrislin/lume?color=7896FF&label=Latest%20Release&logo=github)](https://github.com/morrislin/lume/releases)
+
 <p align="center">
   <img src="assets/demo.png" width="900" alt="Lume IDE Demo">
 </p>
@@ -56,6 +58,14 @@ Lume is built on **Tauri 2.0**, ensuring native speed across major operating sys
 - **PDF Engine**: PDF.js (WebWorker implementation)
 
 ---
+
+## 📥 Downloads
+
+Lume provides standalone installers for all major platforms. You can find the latest version on our **[Release Page](https://github.com/morrislin/lume/releases)**.
+
+- **macOS**: `.dmg` (Universal)
+- **Windows**: `.msi` (x64)
+- **Linux**: `.AppImage` / `.deb`
 
 ## 📜 Getting Started
 
