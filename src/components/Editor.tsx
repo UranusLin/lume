@@ -61,5 +61,21 @@ export function Editor({ value, onChange }: EditorProps) {
         }
     }, [value]);
 
+    useEffect(() => {
+        const handleJump = (e: any) => {
+            if (viewRef.current) {
+                const line = e.detail.line;
+                const pos = viewRef.current.state.doc.line(line).from;
+                viewRef.current.dispatch({
+                    selection: { anchor: pos, head: pos },
+                    scrollIntoView: true
+                });
+                viewRef.current.focus();
+            }
+        };
+        window.addEventListener("cm-jump-to-line", handleJump);
+        return () => window.removeEventListener("cm-jump-to-line", handleJump);
+    }, []);
+
     return <div ref={editorRef} style={{ height: "100%" }} />;
 }

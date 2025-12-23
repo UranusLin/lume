@@ -67,7 +67,7 @@ export function CommandPalette({ isOpen, onClose, onComplete }: CommandPalettePr
                             <span style={{ fontWeight: 600 }}>Lume AI Copilot</span>
                             <div style={{ flex: 1 }} />
                             <div style={{ display: "flex", gap: "8px", background: "rgba(0,0,0,0.2)", padding: "4px", borderRadius: "6px" }}>
-                                {["gpt-4o", "claude-3-5", "gemini-1.5"].map(m => (
+                                {["gpt-4o", "claude-3-5-sonnet-latest", "gemini-2.0-flash-exp"].map(m => (
                                     <div
                                         key={m}
                                         onClick={() => setModel(m)}
@@ -80,7 +80,7 @@ export function CommandPalette({ isOpen, onClose, onComplete }: CommandPalettePr
                                             color: model === m ? "white" : "var(--text-dim)"
                                         }}
                                     >
-                                        {m.split('-')[0].toUpperCase()}
+                                        {m.includes("gpt") ? "GPT-4o" : m.includes("claude") ? "Claude 3.5" : "Gemini 2.0"}
                                     </div>
                                 ))}
                             </div>

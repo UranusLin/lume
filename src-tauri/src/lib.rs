@@ -3,6 +3,47 @@ mod ai;
 use tauri::Manager;
 use tauri_plugin_shell::ShellExt;
 use std::fs;
+use serde::Serialize;
+use regex::Regex;
+
+#[derive(Serialize)]
+pub struct OutlineItem {
+    pub title: String,
+    pub level: u32,
+    pub line: usize,
+}
+
+#[tauri::command]
+fn get_document_outline(content: String) -> Vec<OutlineItem> {
+    let mut items = Vec::new();
+    // Match sections, subsections, subsubsections, and labels
+    let re = Regex::new(r"\\(section|subsection|subsubsection|label)\*?\{([^}]+)\}").unwrap();
+    
+    for (i, line) in content.lines().enumerate() {
+        if let Some(caps) = re.captures(line) {
+            let tag = caps.get(1).map_or("", |m| m.as_str());
+            let title = caps.get(2).map_or("", |m| m.as_str()).to_string();
+            
+            let level = match tag {
+                "section" => 1,
+                "subsection" => 2,
+                "subsubsection" => 3,
+                "label" => 4, // Treats labels as the deepest level for navigation
+                _ => 1,
+            };
+            
+            // For labels, prefix the title so it's clear in the UI
+            let display_title = if tag == "label" {
+                format!("Label: {}", title)
+            } else {
+                title
+            };
+
+            items.push(OutlineItem { title: display_title, level, line: i + 1 });
+        }
+    }
+    items
+}
 
 #[tauri::command]
 async fn compile_latex(app: tauri::AppHandle, content: String) -> Result<Vec<u8>, String> {
@@ -58,7 +99,7 @@ pub fn run() {
         .plugin(tauri_plugin_shell::init())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
-        .invoke_handler(tauri::generate_handler![compile_latex, ai::ai_complete])
+        .invoke_handler(tauri::generate_handler![compile_latex, get_document_outline, ai::ai_complete])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
