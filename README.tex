@@ -71,11 +71,19 @@ Lume is built on \textbf{Tauri 2.0}, ensuring native speed across major operatin
 \end{itemize}
 
 \section{Getting Started}
+\subsection{Development}
 \begin{enumerate}
-    \item \texttt{git clone ...}
     \item \texttt{pnpm install}
     \item \texttt{pnpm tauri dev}
 \end{enumerate}
+
+\subsection{Build \& Deployment}
+To generate a production-ready standalone installer:
+\begin{itemize}
+    \item Run: \texttt{pnpm tauri build}
+    \item \textbf{macOS}: Output found in \texttt{target/release/bundle/dmg/}.
+    \item \textbf{Windows/Linux}: Output found in respective bundle folders.
+\end{itemize}
 
 \vspace{2em}
 \centerline{\textit{Focus on your content. Let Lume handle the rest.}}

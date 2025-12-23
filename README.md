@@ -1,5 +1,9 @@
 # Project Lume: Zero-Config AI-Driven LaTeX IDE
 
+<p align="center">
+  <img src="assets/demo.png" width="900" alt="Lume IDE Demo">
+</p>
+
 > **Status**: Beta | **Core**: Rust (Tauri / Tectonic) | **UX**: Liquid Glass (React 19)
 
 **Lume** (Latin for *light/illumination*) is a next-generation LaTeX environment designed to end the nightmare of environmental configuration. By merging a self-contained Tectonic compiler with an agentic AI core, Lume allows researchers, students, and writers to focus on creation rather than troubleshooting.
@@ -55,8 +59,18 @@ Lume is built on **Tauri 2.0**, ensuring native speed across major operating sys
 
 ## 📜 Getting Started
 
+### Development
 1. **Clone the repository**: `git clone ...`
 2. **Install dependencies**: `pnpm install`
 3. **Run in development**: `pnpm tauri dev`
+
+### 📦 Build & Deployment
+To generate a production-ready installer for your OS:
+```bash
+pnpm tauri build
+```
+- **macOS Output**: `src-tauri/target/release/bundle/dmg/*.dmg`
+- **Windows Output**: `src-tauri/target/release/bundle/msi/*.msi`
+- **Linux Output**: `src-tauri/target/release/bundle/deb/*.deb`
 
 *Focus on your content. Let Lume handle the rest.*
