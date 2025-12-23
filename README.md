@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/lume_logo.png" width="128" alt="Lume Logo">
+</p>
+
 # Project Lume: Zero-Config AI-Driven LaTeX IDE
 
 [![Release](https://img.shields.io/github/v/release/morrislin/lume?color=7896FF&label=Latest%20Release&logo=github)](https://github.com/morrislin/lume/releases)

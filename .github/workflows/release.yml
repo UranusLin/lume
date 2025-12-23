@@ -2,7 +2,7 @@ name: "Release"
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   publish:
@@ -11,7 +11,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, ubuntu-22.04, windows-latest]
+        include:
+          - platform: macos-latest
+            suffix: ""
+            archive: "tar.gz"
+          - platform: windows-latest
+            suffix: ".exe"
+            archive: "zip"
+          - platform: ubuntu-22.04
+            suffix: ""
+            archive: "tar.gz"
 
     runs-on: ${{ matrix.platform }}
     steps:
@@ -26,11 +35,40 @@ jobs:
           version: 8
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@stable
+
       - name: install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-22.04'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf libsoup-3.0-dev
+
+      - name: Get Rust target triple
+        id: triple
+        shell: bash
+        run: |
+          TRIPLE=$(rustc -vV | grep host: | cut -d' ' -f2)
+          echo "target=$TRIPLE" >> $GITHUB_OUTPUT
+
+      - name: Download Tectonic Sidecar
+        shell: bash
+        run: |
+          TRIPLE=${{ steps.triple.outputs.target }}
+          VERSION="0.15.0" # Use a stable version of tectonic
+
+          if [ "${{ matrix.platform }}" == "windows-latest" ]; then
+            URL="https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%40$VERSION/tectonic-$TRIPLE.zip"
+            curl -L $URL -o tectonic.zip
+            unzip tectonic.zip
+          else
+            URL="https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%40$VERSION/tectonic-$TRIPLE.tar.gz"
+            curl -L $URL -o tectonic.tar.gz
+            tar -xzf tectonic.tar.gz
+          fi
+
+          # Move to src-tauri with the expected name
+          mv tectonic${{ matrix.suffix }} src-tauri/tectonic-$TRIPLE${{ matrix.suffix }}
+          chmod +x src-tauri/tectonic-$TRIPLE${{ matrix.suffix }}
+
       - name: install frontend dependencies
         run: pnpm install
       - uses: tauri-apps/tauri-action@v0
