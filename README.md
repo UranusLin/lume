@@ -12,7 +12,7 @@
 
 > **Status**: Beta | **Core**: Rust (Tauri / Tectonic) | **UX**: Liquid Glass (React 19)
 
-**Lume** (Latin for *light/illumination*) is a next-generation LaTeX environment designed to end the nightmare of environmental configuration. By merging a self-contained Tectonic compiler with an agentic AI core, Lume allows researchers, students, and writers to focus on creation rather than troubleshooting.
+**Lume** (Latin for *light/illumination*) is a next-generation LaTeX environment designed to end the nightmare of environmental configuration. By bridging a self-contained Tectonic compiler with an agentic AI core, Lume allows researchers, students, and writers to focus on creation rather than troubleshooting.
 
 ---
 
@@ -36,12 +36,16 @@
   - [x] Multi-file Explorer (create and switch between `.tex` documents).
   - [x] Native PDF Export/Download with full OS permission integration.
   - [x] Atomic State Management for reliable file switching.
+  - [x] **Persistent AI Chat Sidebar**: Integrated context-aware AI panel with resizing.
+  - [x] **Multi-Provider Hub**: Dynamic steering for OpenAI, Claude, and Gemini.
+- [x] **Phase 5: Navigation & Theming**:
+  - [x] **Floating Structure Tree**: Fast navigation via document sections/labels.
+  - [x] **Dark/Light Mode Sync**: Adaptive Liquid Glass theme based on OS preferences.
 
 ### 🛠 In Progress / Planned
-- [ ] **Persistent AI Chat Sidebar**: Move AI interaction from a modal to a dedicated side panel.
-- [ ] **Multi-Provider Settings**: Securely store and manage API keys (OpenAI, Anthropic, Google).
-- [ ] **Floating Structure Tree**: Fast navigation via document sections/labels.
-- [ ] **Dark/Light Mode Sync**: Adaptive Liquid Glass theme based on OS preferences.
+- [ ] **Interactive Labels**: Advanced jump-to-label and cross-reference preview.
+- [ ] **Collaboration Core**: Real-time multi-user editing bridge.
+- [ ] **Plugin Ecosystem**: User-defined VS Code-compatible extensions.
 
 ---
 
