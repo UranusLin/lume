@@ -56,16 +56,16 @@ jobs:
           VERSION="0.15.0" # Use a stable version of tectonic
 
           if [ "${{ matrix.platform }}" == "windows-latest" ]; then
-            URL="https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%40$VERSION/tectonic-$TRIPLE.zip"
+            URL="https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%40$VERSION/tectonic-$VERSION-$TRIPLE.zip"
             curl -L $URL -o tectonic.zip
             unzip tectonic.zip
           else
-            URL="https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%40$VERSION/tectonic-$TRIPLE.tar.gz"
+            URL="https://github.com/tectonic-typesetting/tectonic/releases/download/tectonic%40$VERSION/tectonic-$VERSION-$TRIPLE.tar.gz"
             curl -L $URL -o tectonic.tar.gz
             tar -xzf tectonic.tar.gz
           fi
 
-          # Move to src-tauri with the expected name
+          # Move to src-tauri with the expected name (sidecar expects tectonic-TARGET-TRIPLE)
           mv tectonic${{ matrix.suffix }} src-tauri/tectonic-$TRIPLE${{ matrix.suffix }}
           chmod +x src-tauri/tectonic-$TRIPLE${{ matrix.suffix }}
 
