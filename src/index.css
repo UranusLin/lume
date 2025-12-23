@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --glass-bg: rgba(15, 15, 25, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-accent: rgba(120, 150, 255, 0.3);
+  --glass-highlight: rgba(255, 255, 255, 0.05);
+  --text-main: #e0e0e0;
+  --text-dim: #a0a0a0;
+  --accent-color: #7896ff;
+  --bg-dark: #0a0a0f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.liquid-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at top left, #1a1a2e 0%, #0a0a0f 100%);
+}
+
+.header {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--glass-border);
+  justify-content: space-between;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  background: var(--bg-dark);
+}
+
+.layout-content {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    gap: 1px;
+    background: var(--glass-border);
+}
+
+.sidebar-container {
+    width: 300px;
+    display: flex;
+    height: 100%;
+    border-right: 1px solid var(--glass-border);
+}
+
+.activity-bar {
+    width: 60px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    gap: 24px;
+    border-right: 1px solid var(--glass-border);
+}
+
+.activity-bar button {
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.activity-bar button.active {
+    color: var(--accent-color);
+}
+
+.activity-bar button:hover {
+    color: white;
+    transform: none;
+}
+
+.side-panel {
+    flex: 1;
+    height: 100%;
+    background: rgba(10, 10, 15, 0.8);
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-pane, .preview-pane {
+  flex: 1;
+  background: var(--bg-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card {
+  background: var(--glass-highlight);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: var(--glass-accent);
+  border-color: var(--accent-color);
+}
+
+button {
+  background: var(--glass-accent);
+  border: 1px solid var(--glass-border);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+button:hover {
+  background: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+.cm-editor {
+  height: 100%;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+}

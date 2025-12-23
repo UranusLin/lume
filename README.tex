@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{amssymb}
+
+\geometry{margin=1in}
+\definecolor{accent}{HTML}{7896FF}
+\definecolor{statusgray}{HTML}{666666}
+
+\title{\Huge \textbf{\textcolor{accent}{Project Lume}}}
+\author{Zero-Config AI-Driven LaTeX IDE}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\centerline{\textcolor{statusgray}{\textbf{Status}: Beta $|$ \textbf{Core}: Rust (Tauri / Tectonic) $|$ \textbf{UX}: Liquid Glass (React 19)}}
+
+\vspace{1em}
+
+\begin{abstract}
+\textbf{Lume} (Latin for \textit{light/illumination}) is a next-generation LaTeX environment designed to end the nightmare of environmental configuration. By bridging a self-contained Tectonic compiler with an agentic AI core, Lume allows researchers, students, and writers to focus on creation rather than troubleshooting.
+\end{abstract}
+
+\section{The Vision}
+\begin{itemize}
+    \item \textbf{End Environment Hell}: Integrated Tectonic engine for ``compile-on-demand'' packages. No multi-gigabyte TeX Live installation required.
+    \item \textbf{AI-First Workflow}: Built-in Lume Copilot for generating complex tables, formulas, and document structures via natural language.
+    \item \textbf{Premium Aesthetics}: A ``Liquid Glass'' UI inspired by modern macOS design, featuring deep translucency and smooth transitions.
+    \item \textbf{Native Performance}: Built with Rust for a minimal memory footprint and blistering fast compilation.
+\end{itemize}
+
+\section{Features \& Progress}
+
+\subsection{Completed (Implemented)}
+\begin{enumerate}[label=\checkmark]
+    \item \textbf{Phase 1: The Forge}: Tauri + Tectonic Rust integration.
+    \item \textbf{Phase 2: The Canvas}: CodeMirror 6 Editor and multi-page previewer.
+    \item \textbf{Phase 3: The Soul}: Multi-model AI completion bridge (OpenAI, Claude, Gemini).
+    \item \textbf{Phase 4: Advanced IDE Features}: VS Code-style Sidebar, multi-file support, and native PDF exporting.
+\end{enumerate}
+
+\subsection{In Progress / Planned}
+\begin{itemize}[label=$\square$]
+    \item Persistent AI Chat Sidebar.
+    \item Multi-Provider Settings Page for API keys.
+    \item Floating Document Structure (Section Jump).
+    \item Dark/Light Mode Synchronization.
+\end{itemize}
+
+\section{Supported Platforms}
+Lume is built on \textbf{Tauri 2.0}, ensuring native speed across major operating systems:
+\begin{itemize}
+    \item \textbf{macOS}: Fully optimized (Apple Silicon \& Intel).
+    \item \textbf{Windows}: Windows 10/11 supported.
+    \item \textbf{Linux}: Major distributions supported via AppImage/Deb.
+\end{itemize}
+
+\section{Tech Stack}
+\begin{itemize}
+    \item \textbf{Frontend}: React 19, Vite, Tailwind 4, CodeMirror 6.
+    \item \textbf{Backend}: Rust, Tauri 2.0 (FS, Dialog, Shell plugins).
+    \item \textbf{Compiler}: Tectonic (Native Rust sidecar).
+    \item \textbf{PDF Engine}: PDF.js (WebWorker implementation).
+\end{itemize}
+
+\section{Getting Started}
+\begin{enumerate}
+    \item \texttt{git clone ...}
+    \item \texttt{pnpm install}
+    \item \texttt{pnpm tauri dev}
+\end{enumerate}
+
+\vspace{2em}
+\centerline{\textit{Focus on your content. Let Lume handle the rest.}}
+
+\end{document}
